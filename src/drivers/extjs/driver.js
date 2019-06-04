@@ -13,6 +13,8 @@ import {ExtJsComponentComboBox} from './components/comboBox.js'
 import {ExtJsComponentTextField} from './components/textField.js'
 import {ExtJsComponentCellEditor} from './components/cellEditor.js'
 import {ExtJsComponentNumberField} from './components/numberField.js'
+import {ExtJsComponentPanel} from './components/panel.js'
+import {ExtJsComponentTreePanel} from './components/treePanel.js'
 
 export class ExtJsDriver {
 
@@ -27,13 +29,13 @@ export class ExtJsDriver {
   get supportedComponents () {
     return [
       'tab', 'grid', 'radio', 'button', 'window', 'checkBox', 'comboBox', 'textField', 'numberField',
-      'cellEditor', 'dataview'
+      'cellEditor', 'dataview', 'panel', 'treePanel'
     ]
   }
 
   get supportedComponentActions () {
     return [
-      'click', 'fill', 'select', 'isEnabled', 'isDisabled', 'isHidden', 'isVisible', 'checkRowsCount', 'edit', 'clickAction'
+      'click', 'fill', 'select', 'isEnabled', 'isDisabled', 'isHidden', 'isVisible', 'checkRowsCount', 'edit', 'clickAction', 'toggle'
     ]
   }
 
@@ -72,6 +74,10 @@ export class ExtJsDriver {
       componentObject = new ExtJsComponentNumberField(properties)
     } else if (type === 'dataview') {
       componentObject = new ExtJsComponentDataView(properties)
+    } else if (type === 'panel') {
+      componentObject = new ExtJsComponentPanel(properties)
+    } else if (type === 'treePanel') {
+      componentObject = new ExtJsComponentTreePanel(properties)
     }
 
     if (!componentObject) {

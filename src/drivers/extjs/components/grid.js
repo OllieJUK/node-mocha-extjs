@@ -16,8 +16,14 @@ export class ExtJsComponentGrid extends ExtJsComponentBase {
   select (callback, rowIndex = 0, colIndex = 0) {
     const cmp = this.extJsComponent
     let htmlElement = null
+    let focusEl = null
 
     try {
+      focusEl = document
+          .getElementById(cmp.el.id)
+          .getElementsByClassName('x-grid-view')[0]
+      focusEl.focus();
+
       htmlElement = document
         .getElementById(cmp.el.id)
         .getElementsByClassName('x-grid-item')[rowIndex]
